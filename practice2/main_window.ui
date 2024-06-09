@@ -1,157 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>800</width>
-    <height>600</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QWidget" name="mainWidget">
-   <layout class="QVBoxLayout" name="MainLayout">
-    <item>
-     <widget class="QStackedWidget" name="stackedWidget">
-      <widget class="QVideoWidget" name="video">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+  <class>MainWindow</class>
+  <widget class="QMainWindow" name="MainWindow">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>600</height>
+      </rect>
+    </property>
+    <property name="windowTitle">
+      <string>MainWindow</string>
+    </property>
+    <widget class="QWidget" name="mainWidget">
+      <layout class="QVBoxLayout" name="MainLayout">
+        <item>
+          <widget class="QVideoWidget" name="video">
+            <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+              </sizepolicy>
+            </property>
+          </widget>
+        </item>
+        <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="spacing">
+              <number>0</number>
+            </property>
+            <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+            </property>
+            <item>
+              <widget class="QPushButton" name="controlButton">
+                <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                  </sizepolicy>
+                </property>
+                <property name="text">
+                  <string>播放</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QSlider" name="slider">
+                <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                  </sizepolicy>
+                </property>
+                <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+              </widget>
+            </item>
+          </layout>
+        </item>
+      </layout>
+    </widget>
+    <widget class="QMenuBar" name="menubar">
+      <property name="geometry">
+        <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>800</width>
+          <height>33</height>
+        </rect>
+      </property>
+      <widget class="QMenu" name="menu">
+        <property name="title">
+          <string>文件</string>
+        </property>
+        <addaction name="open"/>
+        <addaction name="separator"/>
+        <addaction name="start"/>
+        <addaction name="close"/>
+        <addaction name="separator"/>
+        <addaction name="exit"/>
       </widget>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>0</number>
+      <widget class="QMenu" name="menu_2">
+        <property name="title">
+          <string>照片</string>
+        </property>
+        <addaction name="capture"/>
+      </widget>
+      <widget class="QMenu" name="menu_3">
+        <property name="title">
+          <string>视频</string>
+        </property>
+        <addaction name="record"/>
+        <addaction name="stop"/>
+      </widget>
+      <widget class="QMenu" name="menuDevices">
+        <property name="title">
+          <string>设备</string>
+        </property>
+      </widget>
+      <addaction name="menu"/>
+      <addaction name="menu_2"/>
+      <addaction name="menu_3"/>
+      <addaction name="menuDevices"/>
+    </widget>
+    <widget class="QStatusBar" name="statusbar"/>
+    <action name="start">
+      <property name="text">
+        <string>开启相机</string>
       </property>
-      <property name="sizeConstraint">
-       <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+    </action>
+    <action name="open">
+      <property name="text">
+        <string>打开</string>
       </property>
-      <item>
-       <widget class="QPushButton" name="controlButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>播放</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSlider" name="slider">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
+    </action>
+    <action name="close">
+      <property name="text">
+        <string>关闭相机</string>
+      </property>
+    </action>
+    <action name="exit">
+      <property name="text">
+        <string>退出</string>
+      </property>
+    </action>
+    <action name="capture">
+      <property name="text">
+        <string>拍照</string>
+      </property>
+    </action>
+    <action name="record">
+      <property name="text">
+        <string>开始录制</string>
+      </property>
+    </action>
+    <action name="stop">
+      <property name="text">
+        <string>停止录制</string>
+      </property>
+    </action>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>33</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>文件</string>
-    </property>
-    <addaction name="open"/>
-    <addaction name="separator"/>
-    <addaction name="start"/>
-    <addaction name="close"/>
-    <addaction name="separator"/>
-    <addaction name="exit"/>
-   </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>照片</string>
-    </property>
-    <addaction name="capture"/>
-   </widget>
-   <widget class="QMenu" name="menu_3">
-    <property name="title">
-     <string>视频</string>
-    </property>
-    <addaction name="record"/>
-    <addaction name="stop"/>
-   </widget>
-   <widget class="QMenu" name="menuDevices">
-    <property name="title">
-     <string>设备</string>
-    </property>
-   </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
-   <addaction name="menuDevices"/>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="start">
-   <property name="text">
-    <string>开启相机</string>
-   </property>
-  </action>
-  <action name="open">
-   <property name="text">
-    <string>打开</string>
-   </property>
-  </action>
-  <action name="close">
-   <property name="text">
-    <string>关闭相机</string>
-   </property>
-  </action>
-  <action name="exit">
-   <property name="text">
-    <string>退出</string>
-   </property>
-  </action>
-  <action name="capture">
-   <property name="text">
-    <string>拍照</string>
-   </property>
-  </action>
-  <action name="record">
-   <property name="text">
-    <string>开始录制</string>
-   </property>
-  </action>
-  <action name="stop">
-   <property name="text">
-    <string>停止录制</string>
-   </property>
-  </action>
- </widget>
- <customwidgets>
-  <customwidget>
-   <class>QVideoWidget</class>
-   <extends>QWidget</extends>
-   <header>qvideowidget.h</header>
-  </customwidget>
- </customwidgets>
- <resources/>
- <connections/>
+  <customwidgets>
+    <customwidget>
+      <class>QVideoWidget</class>
+      <extends>QWidget</extends>
+      <header>qvideowidget.h</header>
+    </customwidget>
+  </customwidgets>
+  <resources/>
+  <connections/>
 </ui>

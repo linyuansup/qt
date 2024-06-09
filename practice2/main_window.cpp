@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
+	camera->stop();
 	delete ui;
 }
 
@@ -49,7 +50,6 @@ void MainWindow::on_capture_triggered()
 
 void MainWindow::on_exit_triggered()
 {
-	camera->stop();
 	this->close();
 }
 
