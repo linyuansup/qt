@@ -24,6 +24,8 @@ set(PROJECT_SOURCES
         text_message.cpp
         server_head.h
         server_head.cpp
+        user_info.h
+        user_info.cpp
         file_head.h
         file_head.cpp
         socket.h

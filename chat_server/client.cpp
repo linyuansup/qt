@@ -23,22 +23,26 @@ void Client::newConnection(Socket* socket)
 	connect(socket, &Socket::messageReceived, [this](TextMessage* message) {
 		qDebug() << "Recieve message from " + message->headInfo->address.toString() + ":" + QString::number(message->headInfo->port);
 		qDebug() << "Content: " + message->message;
+		emit messageReceived(message);
 		});
 
-	connect(socket, &Socket::fileRecieved, [this](FileHead* message, QByteArray* content) {
+	connect(socket, &Socket::fileRecieved, [this](ServerHead* server, FileHead* message, QByteArray* content) {
 		QString path = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + message->filename;
 		QFile file(path);
 		file.open(QIODevice::WriteOnly);
 		file.write(content->data(), content->size());
 		file.close();
+		emit fileReceived(server, message, content);
 		});
 
 	connect(socket, &Socket::disconnected, [this, socket] {
 		qDebug() << "Client ip = " + socket->socket->peerAddress().toString() + " disconnected";
+		emit disconnected();
 		});
 
-	connect(socket, &Socket::onProcess, [this](QString filename, unsigned long long readed, unsigned long long total) {
-		qDebug() << filename + " readed: " + QString::number(readed) + " Total: " + QString::number(total);
+	connect(socket, &Socket::onProcess, [this](ServerHead* server, FileHead* message, unsigned long long readed, unsigned long long total) {
+		qDebug() << message->filename + " readed: " + QString::number(readed) + " Total: " + QString::number(total);
+		emit onProcess(server, message, readed, total);
 		});
 }
 

@@ -36,11 +36,11 @@ signals:
 signals:
 	void messageReceived(TextMessage* message);
 signals:
-	void fileRecieved(FileHead* message, QByteArray* content);
+	void fileRecieved(ServerHead* server, FileHead* message, QByteArray* content);
 signals:
 	void disconnected();
 signals:
-	void onProcess(QString filename, unsigned long long readed, unsigned long long total);
+	void onProcess(ServerHead* server, FileHead* message, unsigned long long readed, unsigned long long total);
 };
 
 #endif // SOCKET_H

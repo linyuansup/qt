@@ -34,8 +34,7 @@ Socket* SocketList::find(unsigned int address, unsigned short port)
 	mutex.lock();
 	for (unsigned int i = 0; i < vec.size(); i++)
 	{
-		//if (vec[i]->getPeerAddress() == address && vec[i]->getPeerPort() == port)
-		if (vec[i]->getPeerAddress() == address)
+		if (vec[i]->getPeerAddress() == address && vec[i]->getPeerPort() == port)
 		{
 			mutex.unlock();
 			return vec[i];

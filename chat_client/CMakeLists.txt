@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Network)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Sql REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -28,6 +29,8 @@ set(PROJECT_SOURCES
         file_head.cpp
         socket.h
         socket.cpp
+        user_info.h
+        user_info.cpp
         socket_list.h
         socket_list.cpp
         byte_array.h
@@ -60,6 +63,7 @@ endif()
 
 target_link_libraries(chat_client PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(chat_client PRIVATE Qt6::Network)
+target_link_libraries(chat_client PRIVATE Qt${QT_VERSION_MAJOR}::Sql)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

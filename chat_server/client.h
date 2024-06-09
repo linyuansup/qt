@@ -2,8 +2,9 @@
 #define CLIENT_H
 
 #include <QFile>
-#include <QTcpServer>
 #include <QStandardPaths>
+#include <QMessageBox>
+#include <QTcpServer>
 
 #include "socket.h"
 #include "server_head.h"
@@ -25,6 +26,15 @@ public:
 	void sendText(Socket* socket, QString text, unsigned int targetIp, unsigned short targetPort);
 	void startListen(unsigned short port);
 	Socket* connectTo(unsigned int address, unsigned short port);
+
+signals:
+	void messageReceived(TextMessage* message);
+signals:
+	void onProcess(ServerHead* server, FileHead* message, unsigned long long readed, unsigned long long total);
+signals:
+	void disconnected();
+signals:
+	void fileReceived(ServerHead* server, FileHead* message, QByteArray* content);
 };
 
 #endif // CLIENT_H

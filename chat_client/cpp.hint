@@ -9,3 +9,4 @@
 #define QT_BEGIN_NAMESPACE namespace QT_NAMESPACE {
 #define slots
 #define emit
+#define signals

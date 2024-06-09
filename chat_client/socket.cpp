@@ -59,16 +59,16 @@ Socket::Socket(QTcpSocket* socket, bool serverMode) : socket(socket), serverMode
 						fileHead->filename = ByteArray(&content).asString();
 						buffer = new QByteArray(buffer->mid(fileHead->fileNameLength));
 					}
-					emit onProcess(fileHead->filename, std::min((unsigned long long)buffer->size(), head->messageSize), head->messageSize);
+					emit onProcess(head, fileHead, std::min((unsigned long long)buffer->size(), head->messageSize), head->messageSize);
 					if (buffer->size() >= head->messageSize - 8 - fileHead->filename.length()) {
 						if (buffer->size() == head->messageSize - 8 - fileHead->filename.length()) {
-							emit fileRecieved(fileHead, buffer);
+							emit fileRecieved(head, fileHead, buffer);
 							buffer = nullptr;
 							return;
 						}
 						else {
 							auto fileContent = buffer->mid(0, head->messageSize - 8 - fileHead->filename.length());
-							emit fileRecieved(fileHead, &fileContent);
+							emit fileRecieved(head, fileHead, &fileContent);
 							buffer = new QByteArray(buffer->mid(head->messageSize - 8 - fileHead->filename.length()));
 						}
 						fileHead = nullptr;
